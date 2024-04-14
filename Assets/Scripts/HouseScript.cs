@@ -9,7 +9,7 @@ public class HouseScript : MonoBehaviour
     public GameObject DemonPrefab;
     public Transform Spawnpoint;
     public SphereCollider GuardSphere;
-    public float TimeToWork = 5; 
+    public float TimeToWork = 5;
 
     public Action action;
     public int LimbId;
@@ -21,20 +21,23 @@ public class HouseScript : MonoBehaviour
     }
 
     [Serializable]
-    public enum Action {
+    public enum Action
+    {
         None,
         Shuffle,
         ReplaceHorns,
         ReplaceFeature,
         CleanBlood,
-    } 
+        Consume,
+    }
 
     private State state = State.Idle;
     private DemonConfiguration demonConfig;
     private DamageLevel damageLevel;
     private float _timeLeft;
 
-    void Start(){
+    void Start()
+    {
         GuardSphere.enabled = false;
     }
 
@@ -46,7 +49,8 @@ public class HouseScript : MonoBehaviour
             var c = Mathf.Cos(Time.time * 10) * 0.1f + 0.9f;
             House.localScale = new Vector3(s, c, s);
             _timeLeft -= Time.deltaTime;
-            if (_timeLeft < 0) {
+            if (_timeLeft < 0)
+            {
                 state = State.Idle;
                 GuardSphere.enabled = false;
                 SpawnDemon();
@@ -54,8 +58,9 @@ public class HouseScript : MonoBehaviour
         }
     }
 
-    void SpawnDemon() 
+    void SpawnDemon()
     {
+        if (action == Action.Consume) return;
 
         var demon = Instantiate(DemonPrefab, Spawnpoint.position, Spawnpoint.rotation).GetComponent<DemonScript>();
         switch (action)
@@ -63,15 +68,15 @@ public class HouseScript : MonoBehaviour
             case Action.None:
                 demon.SetConfig(demonConfig, damageLevel);
                 break;
-            
+
             case Action.Shuffle:
                 break;
-            
+
             case Action.ReplaceHorns:
                 demonConfig.HornsId = LimbId;
                 demon.SetConfig(demonConfig, damageLevel);
                 break;
-            
+
             case Action.ReplaceFeature:
                 demonConfig.FeatureId = LimbId;
                 demon.SetConfig(demonConfig, damageLevel);
@@ -86,11 +91,13 @@ public class HouseScript : MonoBehaviour
         damageLevel = null;
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
         if (state != State.Idle) return;
 
         var demon = other.GetComponent<DemonScript>();
-        if (demon != null){
+        if (demon != null)
+        {
             GuardSphere.enabled = true;
             demonConfig = demon.config;
             damageLevel = demon.damageLevel;
@@ -98,5 +105,5 @@ public class HouseScript : MonoBehaviour
             Destroy(demon.gameObject);
             _timeLeft = TimeToWork;
         }
-    } 
+    }
 }
