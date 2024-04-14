@@ -48,6 +48,8 @@ MonoBehaviour:
   CameraSpeed: 10
   RotationSpeed: 2
   DesiredGrabbedDemonHeights: 5
+  LassoPrefab: {fileID: 3496747559686266829, guid: 8fb64ae157a049cff9da61ef83436577,
+    type: 3}
   Camera: {fileID: 856428943810620006}
 --- !u!1 &8032068365441475873
 GameObject:

@@ -10,9 +10,12 @@ public class CameraMovement : MonoBehaviour
     public float RotationSpeed = 10;
     public float DesiredGrabbedDemonHeights = 3f;
 
+    public GameObject LassoPrefab;
+
     public Camera Camera;
 
     private DemonScript Demon;
+    private LineRenderer lasso;
 
     void FixedUpdate()
     {
@@ -40,6 +43,7 @@ public class CameraMovement : MonoBehaviour
                     // Debug.Log($"Demon {demon.Name}");
                     Demon = demon;
                     Demon.StartBeHeld();
+                    lasso = Instantiate(LassoPrefab).GetComponentInChildren<LineRenderer>();
                 }
             }
         }
@@ -48,6 +52,8 @@ public class CameraMovement : MonoBehaviour
             if (Demon != null) {
                 Demon.StopBeHeld();
                 Demon = null;
+                Destroy(lasso.gameObject);
+                lasso = null;
             }
         }
 
@@ -65,6 +71,10 @@ public class CameraMovement : MonoBehaviour
         // Demon.DemonBody.transform.position =  p0 + d * v0;
         var dist = Mathf.Min((desiredPosition - Demon.DemonBody.transform.position).magnitude, 1);
         Demon.DemonBody.velocity = (desiredPosition - Demon.DemonBody.transform.position).normalized * dist * 10;
+
+        for (var i = 0; i < lasso.positionCount; i++) {
+            lasso.SetPosition(i, Vector3.Lerp(desiredPosition, Demon.DemonBody.transform.position, (float)i / (lasso.positionCount - 1)));
+        }
     }
 
     Vector3 MouseRayStart()
