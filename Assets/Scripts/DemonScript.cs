@@ -23,6 +23,8 @@ public class DemonScript : MonoBehaviour
     private int[] sorting = new []{10, 20, 30, 10, 0, 40, 20, 40, 30};
     private DemonConfiguration _config;
 
+    public DemonConfiguration config => _config;
+
     public DamageLevel damageLevel = new DamageLevel();
 
     private float timeOffset; 
@@ -34,9 +36,10 @@ public class DemonScript : MonoBehaviour
         timeOffset = Random.Range(0f, 5f); 
         animationSpeed = Random.Range(0.9f, 1.1f);
         partsArrays = new SpriteRenderer[][]{ Bodies, Heads, Faces, Horns, Features, FaceBlood, HornsBlood, Brains, FacesClosed };
-        SpritePole.localScale = new Vector3(Scale, Scale, Scale);
+        SpritePole.localScale = new Vector3(Scale, Scale * Mathf.Sqrt(2f), Scale);
         Shadowcaster.transform.localScale = new Vector3(Scale, Scale, Scale);
-        Shuffle();
+        if (_config == null)
+            Shuffle();
     }
 
     void Update() {
@@ -63,6 +66,15 @@ public class DemonScript : MonoBehaviour
             BodyId = Random.Range(0, Bodies.Length),
             FeatureId = Random.Range(0, Features.Length),
         };
+        ApplyConfig();
+    }
+
+    public void SetConfig(DemonConfiguration config, DamageLevel damageLevel = null) 
+    {
+        _config = config;
+        if (damageLevel != null)
+            this.damageLevel = damageLevel;
+    
         ApplyConfig();
     }
 

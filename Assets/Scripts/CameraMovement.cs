@@ -37,7 +37,7 @@ public class CameraMovement : MonoBehaviour
             if (didHit) {
                 var demon =  hitInfo.collider.GetComponent<DemonScript>();
                 if (demon != null) {
-                    Debug.Log($"Demon {demon.Name}");
+                    // Debug.Log($"Demon {demon.Name}");
                     Demon = demon;
                     Demon.StartBeHeld();
                 }
@@ -65,7 +65,6 @@ public class CameraMovement : MonoBehaviour
         // Demon.DemonBody.transform.position =  p0 + d * v0;
         var dist = Mathf.Min((desiredPosition - Demon.DemonBody.transform.position).magnitude, 1);
         Demon.DemonBody.velocity = (desiredPosition - Demon.DemonBody.transform.position).normalized * dist * 10;
-        Debug.Log($"Demon.DemonBody.velocity: {Demon.DemonBody.velocity}");
     }
 
     Vector3 MouseRayStart()
