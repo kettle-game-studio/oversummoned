@@ -34,9 +34,10 @@ public class CameraMovement : MonoBehaviour
 
             var didHit = Physics.Raycast(p0, Camera.transform.forward * 10, out var hitInfo);
             if (didHit) {
-                var demon =  hitInfo.collider.GetComponent<DemonColliderScript>();
+                var demon =  hitInfo.collider.GetComponent<DemonScript>();
                 if (demon != null) {
-                    Demon = demon.Demon;
+                    Debug.Log($"Demon {demon.Name}");
+                    Demon = demon;
                     Demon.StartBeHeld();
                 }
             }

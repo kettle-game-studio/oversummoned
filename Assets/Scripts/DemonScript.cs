@@ -5,8 +5,12 @@ using UnityEngine;
 public class DemonScript : MonoBehaviour
 {
     public string Name;
+    public float Scale = 1;
+
     public Rigidbody DemonBody;
 
+    public MeshRenderer Shadowcaster;
+    public Transform SpritePole;
     public SpriteRenderer[] Bodies;
     public SpriteRenderer[] Heads;
     public SpriteRenderer[] Faces;
@@ -18,7 +22,13 @@ public class DemonScript : MonoBehaviour
     void Start()
     {
         partsArrays = new SpriteRenderer[][]{ Bodies, Heads, Faces, Horns, Features };
+        SpritePole.localScale = new Vector3(Scale, Scale, Scale);
+        Shadowcaster.transform.localScale = new Vector3(Scale, Scale, Scale);
         Shuffle();
+    }
+
+    void Update() {
+        DemonBody.transform.rotation = Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0);
     }
 
     void Shuffle()
