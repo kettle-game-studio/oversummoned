@@ -19,6 +19,8 @@ public class DemonScript : MonoBehaviour
     public SpriteRenderer[] Brains;
     public SpriteRenderer[] FacesClosed;
 
+    public ParticleSystem Particles;
+
     private SpriteRenderer[][] partsArrays;
     private int[] sorting = new []{10, 20, 30, 10, 0, 40, 20, 40, 30};
     private DemonConfiguration _config;
@@ -59,18 +61,23 @@ public class DemonScript : MonoBehaviour
             }
         }
 
-        _timeUntilBlink -= Time.deltaTime;
-        if (_timeUntilBlink < 0) {
-            if (damageLevel.EyesClosed)
-            {
-                _timeUntilBlink = Random.Range(1.0f, 3.0f);
-            } else {
-                _timeUntilBlink = 0.1f;
-            }
+        HandleBlink();
+    }
 
-            damageLevel.EyesClosed = !damageLevel.EyesClosed;
-            ApplyConfig();
+    void HandleBlink()
+    {
+        _timeUntilBlink -= Time.deltaTime;
+        if (_timeUntilBlink > 0) return;
+            
+        if (damageLevel.EyesClosed)
+        {
+            _timeUntilBlink = Random.Range(1.0f, 3.0f);
+        } else {
+            _timeUntilBlink = 0.1f;
         }
+
+        damageLevel.EyesClosed = !damageLevel.EyesClosed;
+        ApplyConfig();
     }
 
     void Shuffle()
@@ -130,6 +137,7 @@ public class DemonScript : MonoBehaviour
         // DemonBody.isKinematic = true;
         angleOffset = 180;
         animationSpeed *= 3;
+        Particles.Play();
     }
 
     public void StopBeHeld()
@@ -137,5 +145,6 @@ public class DemonScript : MonoBehaviour
         // DemonBody.isKinematic = false;
         angleOffset = 0;
         animationSpeed /= 3;
+        Particles.Play();
     }
 }
