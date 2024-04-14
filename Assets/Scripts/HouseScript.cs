@@ -97,7 +97,7 @@ public class HouseScript : MonoBehaviour
         if (state != State.Idle) return;
 
         var demon = other.GetComponent<DemonScript>();
-        if (demon != null)
+        if (demon != null || demon.IsHeld)
         {
             GuardSphere.enabled = true;
             demonConfig = demon.config;

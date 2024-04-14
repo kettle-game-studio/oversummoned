@@ -37,6 +37,8 @@ public class DemonScript : MonoBehaviour
     
     private float _timeUntilBlink;
 
+    public bool IsHeld;
+
     void Start()
     {
         _timeUntilBlink = Random.Range(1.0f, 3.0f);
@@ -150,6 +152,7 @@ public class DemonScript : MonoBehaviour
         angleOffset = 180;
         animationSpeed *= 3;
         Particles.Play();
+        IsHeld = true;
     }
 
     public void StopBeHeld()
@@ -158,5 +161,6 @@ public class DemonScript : MonoBehaviour
         angleOffset = 0;
         animationSpeed /= 3;
         Particles.Play();
+        IsHeld = false;
     }
 }
