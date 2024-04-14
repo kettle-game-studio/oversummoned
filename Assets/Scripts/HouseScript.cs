@@ -10,6 +10,7 @@ public class HouseScript : MonoBehaviour
     public Transform Spawnpoint;
     public SphereCollider GuardSphere;
     public float TimeToWork = 5;
+    public float PushStrength = 10000;
 
     public Action action;
     public int LimbId;
@@ -86,7 +87,7 @@ public class HouseScript : MonoBehaviour
                 demon.SetConfig(demonConfig);
                 break;
         }
-        demon.DemonBody.AddForce(demon.DemonBody.transform.forward * 50000);
+        demon.DemonBody.AddForce(demon.DemonBody.transform.forward * PushStrength);
         demonConfig = null;
         damageLevel = null;
     }

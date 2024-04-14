@@ -14,6 +14,13 @@ public class DemonConfiguration {
     public int FaceId;
     public int HornsId;
     public int FeatureId;
+
+    public bool MeetsRequest(DemonRequest request) {
+        if (request.FeatureId != -1 && request.FeatureId != FeatureId)
+            return false;
+
+        return request.HornsId == -1 ||  request.HornsId == HornsId;
+    }
 }
 
 [Serializable]

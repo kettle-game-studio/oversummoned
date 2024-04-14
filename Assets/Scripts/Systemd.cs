@@ -8,6 +8,8 @@ public class Systemd : MonoBehaviour
     private List<DemonRequest> DemonRequest;
 
     public DemonRequest PopDemonRequest()  {
+        if (DemonRequest.Count == 0) return null;
+
         var res = DemonRequest[0];
         DemonRequest.RemoveAt(0);
         return res;
