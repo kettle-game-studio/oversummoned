@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Systemd : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Systemd : MonoBehaviour
             }
             yield return new WaitForSeconds(Timeout);
         }
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     public DemonRequest PopDemonRequest()  {
