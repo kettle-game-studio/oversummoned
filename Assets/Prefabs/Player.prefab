@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraSpeed: 10
   RotationSpeed: 2
-  DesiredGrabbedDemonHeights: 3
+  DesiredGrabbedDemonHeights: 5
   Camera: {fileID: 856428943810620006}
 --- !u!1 &8032068365441475873
 GameObject:

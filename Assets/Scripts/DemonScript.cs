@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class DemonScript : MonoBehaviour
 {
@@ -28,16 +25,24 @@ public class DemonScript : MonoBehaviour
 
     public DamageLevel damageLevel = new DamageLevel();
 
+    private float timeOffset; 
+    private float animationSpeed;
+    private float angleOffset = 0;
+
     void Start()
     {
-        partsArrays = new SpriteRenderer[][]{ Bodies, Heads, Faces, Horns, Features, FaceBlood, HornsBlood, Brains };
+        timeOffset = Random.Range(0f, 5f); 
+        animationSpeed = Random.Range(0.9f, 1.1f);
+        partsArrays = new SpriteRenderer[][]{ Bodies, Heads, Faces, Horns, Features, FaceBlood, HornsBlood, Brains, FacesClosed };
         SpritePole.localScale = new Vector3(Scale, Scale, Scale);
         Shadowcaster.transform.localScale = new Vector3(Scale, Scale, Scale);
         Shuffle();
     }
 
     void Update() {
+        var angle = System.MathF.Sin(Time.time * animationSpeed + timeOffset) * 10 + angleOffset;
         DemonBody.transform.rotation = Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0);
+        DemonBody.transform.Rotate(Camera.main.transform.forward, angle);
 
         for (var i = 0; i < sorting.Length; i++)
         {
@@ -94,10 +99,14 @@ public class DemonScript : MonoBehaviour
     public void StartBeHeld()
     {
         DemonBody.isKinematic = true;
+        angleOffset = 180;
+        animationSpeed *= 3;
     }
 
     public void StopBeHeld()
     {
         DemonBody.isKinematic = false;
+        angleOffset = 0;
+        animationSpeed /= 3;
     }
 }
