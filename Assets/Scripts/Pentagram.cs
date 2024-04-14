@@ -35,6 +35,7 @@ public class PentragramScript : MonoBehaviour
                 Destroy(demon.gameObject);
                 StartCoroutine(AnimationCoroutine());
                 StartCoroutine(WaitForRequest());
+                systemd.DemonSent();
             }
             else
             {

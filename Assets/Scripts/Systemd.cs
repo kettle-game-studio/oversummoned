@@ -10,6 +10,7 @@ public class Systemd : MonoBehaviour
     public float Timeout = 15;
 
     private Queue<DemonRequest> Queue = new Queue<DemonRequest>();
+    private int totalDemonsSent = 0;
 
     void Start() {
         StartCoroutine(DistributionCoroutine());
@@ -24,7 +25,7 @@ public class Systemd : MonoBehaviour
             }
             yield return new WaitForSeconds(Timeout);
         }
-        while(Queue.Count != 0) {
+        while(totalDemonsSent != DemonRequest.Count) {
             yield return null;
         }
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
@@ -34,5 +35,10 @@ public class Systemd : MonoBehaviour
         if (Queue.Count == 0) return null;
 
         return Queue.Dequeue();
+    }
+
+    public void DemonSent()
+    {
+        totalDemonsSent++;
     }
 }
