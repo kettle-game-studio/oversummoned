@@ -149,17 +149,17 @@ PrefabInstance:
     - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
         type: 3}
       propertyPath: damageLevel.Brains
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
         type: 3}
       propertyPath: damageLevel.FaceBlood
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
         type: 3}
       propertyPath: damageLevel.EyesClosed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
         type: 3}
@@ -824,6 +824,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 108696737481989737, guid: 395d516b242379687b777628a5133033,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 108696737481989737, guid: 395d516b242379687b777628a5133033,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 3492246915667774588, guid: 395d516b242379687b777628a5133033,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -960,6 +970,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
+        type: 3}
+      propertyPath: damageLevel.Brains
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
+        type: 3}
+      propertyPath: damageLevel.FaceBlood
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
+        type: 3}
+      propertyPath: damageLevel.EyesClosed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
         type: 3}
       propertyPath: damageLevel.HornsBlood
