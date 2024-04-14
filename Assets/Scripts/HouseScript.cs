@@ -49,35 +49,41 @@ public class HouseScript : MonoBehaviour
             if (_timeLeft < 0) {
                 state = State.Idle;
                 GuardSphere.enabled = false;
-
-                var demon = Instantiate(DemonPrefab, Spawnpoint.position, Spawnpoint.rotation).GetComponent<DemonScript>();
-                switch (action)
-                {
-                    case Action.None:
-                        demon.SetConfig(demonConfig, damageLevel);
-                        break;
-                    
-                    case Action.Shuffle:
-                        break;
-                    
-                    case Action.ReplaceHorns:
-                        demonConfig.HornsId = LimbId;
-                        demon.SetConfig(demonConfig, damageLevel);
-                        break;
-                    
-                    case Action.ReplaceFeature:
-                        demonConfig.FeatureId = LimbId;
-                        demon.SetConfig(demonConfig, damageLevel);
-                        break;
-
-                    case Action.CleanBlood:
-                        demon.SetConfig(demonConfig);
-                        break;
-                }
-                demonConfig = null;
-                damageLevel = null;
+                SpawnDemon();
             }
         }
+    }
+
+    void SpawnDemon() 
+    {
+
+        var demon = Instantiate(DemonPrefab, Spawnpoint.position, Spawnpoint.rotation).GetComponent<DemonScript>();
+        switch (action)
+        {
+            case Action.None:
+                demon.SetConfig(demonConfig, damageLevel);
+                break;
+            
+            case Action.Shuffle:
+                break;
+            
+            case Action.ReplaceHorns:
+                demonConfig.HornsId = LimbId;
+                demon.SetConfig(demonConfig, damageLevel);
+                break;
+            
+            case Action.ReplaceFeature:
+                demonConfig.FeatureId = LimbId;
+                demon.SetConfig(demonConfig, damageLevel);
+                break;
+
+            case Action.CleanBlood:
+                demon.SetConfig(demonConfig);
+                break;
+        }
+        demon.DemonBody.AddForce(demon.DemonBody.transform.forward * 50000);
+        demonConfig = null;
+        damageLevel = null;
     }
 
     void OnTriggerEnter(Collider other) {
