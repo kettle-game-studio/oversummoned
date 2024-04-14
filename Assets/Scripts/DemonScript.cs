@@ -41,8 +41,9 @@ public class DemonScript : MonoBehaviour
 
     void Update() {
         var angle = System.MathF.Sin(Time.time * animationSpeed + timeOffset) * 10 + angleOffset;
-        DemonBody.transform.rotation = Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0);
+        DemonBody.transform.rotation = Quaternion.identity; //Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0);
         DemonBody.transform.Rotate(Camera.main.transform.forward, angle);
+        DemonBody.transform.Rotate(Vector3.up, Camera.main.transform.rotation.eulerAngles.y);
 
         for (var i = 0; i < sorting.Length; i++)
         {
@@ -98,14 +99,14 @@ public class DemonScript : MonoBehaviour
 
     public void StartBeHeld()
     {
-        DemonBody.isKinematic = true;
+        // DemonBody.isKinematic = true;
         angleOffset = 180;
         animationSpeed *= 3;
     }
 
     public void StopBeHeld()
     {
-        DemonBody.isKinematic = false;
+        // DemonBody.isKinematic = false;
         angleOffset = 0;
         animationSpeed /= 3;
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3644703422838467347}
   - component: {fileID: 2891712493092674960}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face_1_blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1985594687943483600}
   - component: {fileID: 1863085938907656627}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7960641344873221129}
   - component: {fileID: 5457425208327794344}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7724900060051538084}
   - component: {fileID: 5032465163545421380}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: horns_3_blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9214367097717843891}
   - component: {fileID: 2325634935242527482}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wings_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7342405210058237112}
   - component: {fileID: 2955635138627941382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: horns_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1506752107503515388}
   - component: {fileID: 1752895483771642988}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: horns_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 1918725832724141061}
   - component: {fileID: 3703797696073808146}
   - component: {fileID: 1525314937559333894}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8975024526333311383}
   - component: {fileID: 1803287003978675013}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face_3_closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2711974591908194772}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,7 +825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1355564691765233608}
   - component: {fileID: 5594927560126993802}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wings_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4075595938546830183}
   - component: {fileID: 5628928850028066393}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: brains_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 585394307082461315}
   - component: {fileID: 9031568035687451117}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1077,7 +1077,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2153459163023448517}
   - component: {fileID: 3050391782756890338}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tail_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1161,7 +1161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4956396422940009433}
   - component: {fileID: 453727678887647909}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: head_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1245,7 +1245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2859484289825006566}
   - component: {fileID: 557464976708202257}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: horns_4_blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1329,7 +1329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2764032690791143461}
   - component: {fileID: 4357540884875392893}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1413,7 +1413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2997835939721002858}
   - component: {fileID: 5575586286266594042}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1497,7 +1497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6825422918096775345}
   - component: {fileID: 6843311865423551635}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: horns_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1581,7 +1581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2697476127544042346}
   - component: {fileID: 6586828838783738796}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: horns_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1665,7 +1665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2438165602845973490}
   - component: {fileID: 244986360168014515}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face_2_closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1749,7 +1749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5854858172823349611}
   - component: {fileID: 6951436222802452431}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: horns_0_blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1833,7 +1833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8778238376375493916}
   - component: {fileID: 5175147607991825967}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tail_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1917,7 +1917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6463366339674193539}
   - component: {fileID: 4167169288224379305}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face_1_closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2001,7 +2001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1439683541936963385}
   - component: {fileID: 7153765446607254721}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face_3_blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2085,7 +2085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 862846403136125327}
   - component: {fileID: 8054273250864731994}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: horns_1_blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2169,7 +2169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4342899985407741291}
   - component: {fileID: 5614886481355520552}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2253,7 +2253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1375147533575693812}
   - component: {fileID: 6654961933178425034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: horns_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2337,7 +2337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1709408264470366253}
   - component: {fileID: 8085710277351839568}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: horns_2_blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2423,7 +2423,7 @@ GameObject:
   - component: {fileID: 696293640013901723}
   - component: {fileID: 1139714127692324036}
   - component: {fileID: 7036352075102395083}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Demon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2553,7 +2553,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &8363182787982695008
 GameObject:
@@ -2565,7 +2565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3557841709754193461}
   - component: {fileID: 5152370048404089416}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face_2_blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2649,7 +2649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7840161911954798354}
   - component: {fileID: 3137311096494776242}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: head_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

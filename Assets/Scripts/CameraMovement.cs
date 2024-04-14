@@ -32,7 +32,8 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && Demon == null) {
             var p0 = MouseRayStart();
 
-            var didHit = Physics.Raycast(p0, Camera.transform.forward * 10, out var hitInfo);
+            // Debug.Log($"LayerMask.NameToLayer = {LayerMask.NameToLayer("Demon")}");
+            var didHit = Physics.Raycast(p0, Camera.transform.forward * 10, out var hitInfo, 1000, ~(1 << LayerMask.NameToLayer("Wall")));
             if (didHit) {
                 var demon =  hitInfo.collider.GetComponent<DemonScript>();
                 if (demon != null) {
@@ -59,13 +60,12 @@ public class CameraMovement : MonoBehaviour
         var p0 = MouseRayStart();
         var v0 = Camera.transform.forward;
         var d = (DesiredGrabbedDemonHeights - p0.y) / v0.y;
+        var desiredPosition = p0 + d * v0;
 
-        Demon.DemonBody.transform.position =  p0 + d * v0;
-    }
-
-    Vector3 RotationPole() 
-    {
-        return Vector3.zero;
+        // Demon.DemonBody.transform.position =  p0 + d * v0;
+        var dist = Mathf.Min((desiredPosition - Demon.DemonBody.transform.position).magnitude, 1);
+        Demon.DemonBody.velocity = (desiredPosition - Demon.DemonBody.transform.position).normalized * dist * 10;
+        Debug.Log($"Demon.DemonBody.velocity: {Demon.DemonBody.velocity}");
     }
 
     Vector3 MouseRayStart()
