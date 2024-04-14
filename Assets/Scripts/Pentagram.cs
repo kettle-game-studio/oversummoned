@@ -25,7 +25,7 @@ public class PentragramScript : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         var demon = other.GetComponent<DemonScript>();
-        if (demon != null || demon.IsHeld)
+        if (demon != null && !demon.IsHeld)
         {
             if (_request != null && demon.config.MeetsRequest(_request))
             {

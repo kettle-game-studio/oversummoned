@@ -24,6 +24,9 @@ public class Systemd : MonoBehaviour
             }
             yield return new WaitForSeconds(Timeout);
         }
+        while(Queue.Count != 0) {
+            yield return null;
+        }
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
