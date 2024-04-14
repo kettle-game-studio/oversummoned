@@ -15,3 +15,9 @@ public class DemonConfiguration {
     public int HornsId;
     public int FeatureId;
 }
+
+[Serializable]
+public class DemonRequest {
+    public int HornsId;
+    public int FeatureId;
+}
