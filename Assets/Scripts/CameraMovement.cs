@@ -26,7 +26,7 @@ public class CameraMovement : MonoBehaviour
         );
 
         if (Input.GetMouseButton(1)) {
-            this.transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * RotationSpeed, Space.World);
+            transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * RotationSpeed, Space.World);
         }
 
         if (Input.GetMouseButtonDown(0) && Demon == null) {
@@ -60,6 +60,11 @@ public class CameraMovement : MonoBehaviour
         var d = (DesiredGrabbedDemonHeights - p0.y) / v0.y;
 
         Demon.DemonBody.transform.position =  p0 + d * v0;
+    }
+
+    Vector3 RotationPole() 
+    {
+        return Vector3.zero;
     }
 
     Vector3 MouseRayStart()
