@@ -15,10 +15,11 @@ public class PentragramScript : MonoBehaviour
     public SpriteRenderer[] Horns;
     public SpriteRenderer[] Features;
 
-    void Start() {
+    void Start()
+    {
         systemd = GameObject.FindAnyObjectByType<Systemd>();
-        _request = systemd.PopDemonRequest();
         ApplyRequest();
+        StartCoroutine(WaitForRequest(0));
     }
 
     void OnTriggerEnter(Collider other)
@@ -29,16 +30,33 @@ public class PentragramScript : MonoBehaviour
             if (_request != null && demon.config.MeetsRequest(_request))
             {
                 ParticlesGood.Play();
-                _request = systemd.PopDemonRequest();
+                _request = null;
                 ApplyRequest();
                 Destroy(demon.gameObject);
                 StartCoroutine(AnimationCoroutine());
+                StartCoroutine(WaitForRequest());
             }
             else
             {
                 demon.DemonBody.AddForce((demon.transform.position - transform.position).normalized * 50000);
                 ParticlesBad.Play();
             }
+        }
+    }
+
+    IEnumerator WaitForRequest(float timeout = 5)
+    {
+        yield return new WaitForSeconds(timeout);
+        while (true)
+        {
+            _request = systemd.PopDemonRequest();
+            if (_request != null)
+            {
+                ApplyRequest();
+                yield return StartCoroutine(AnimationCoroutine());
+                yield break;
+            }
+            yield return null;
         }
     }
 
@@ -54,7 +72,7 @@ public class PentragramScript : MonoBehaviour
             timeLeft -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        transform.localScale = new Vector3(1,1,1);
+        transform.localScale = new Vector3(1, 1, 1);
     }
 
     void ApplyRequest()
@@ -62,10 +80,10 @@ public class PentragramScript : MonoBehaviour
         Bubble.SetActive(_request != null);
         if (_request == null) return;
 
-        for(var i = 0; i < Horns.Length; i++)
+        for (var i = 0; i < Horns.Length; i++)
             Horns[i].enabled = _request.HornsId == i;
 
-        for(var i = 0; i < Features.Length; i++)
+        for (var i = 0; i < Features.Length; i++)
             Features[i].enabled = _request.FeatureId == i;
     }
 }

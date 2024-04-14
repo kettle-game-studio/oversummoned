@@ -228,6 +228,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
         type: 3}
+      propertyPath: _config.HornsId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
+        type: 3}
+      propertyPath: _config.FeatureId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
+        type: 3}
       propertyPath: damageLevel.Brains
       value: 0
       objectReference: {fileID: 0}
@@ -2873,8 +2883,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DemonRequest:
-  - HornsId: 0
-    FeatureId: 0
+  - HornsId: -1
+    FeatureId: -1
+  - HornsId: 1
+    FeatureId: 1
+  Timeout: 5
 --- !u!4 &1105925981
 Transform:
   m_ObjectHideFlags: 0

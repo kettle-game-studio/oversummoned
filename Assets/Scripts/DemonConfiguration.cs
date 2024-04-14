@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 
 [Serializable]
 public class DamageLevel {
@@ -8,6 +9,7 @@ public class DamageLevel {
     public bool EyesClosed;
 }
 
+[Serializable]
 public class DemonConfiguration {
     public int BodyId;
     public int HeadId;

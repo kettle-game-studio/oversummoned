@@ -23,6 +23,8 @@ public class DemonScript : MonoBehaviour
 
     private SpriteRenderer[][] partsArrays;
     private int[] sorting = new []{10, 20, 30, 10, 0, 40, 20, 40, 30};
+
+    [SerializeField]
     private DemonConfiguration _config;
 
     public DemonConfiguration config => _config;
@@ -43,8 +45,18 @@ public class DemonScript : MonoBehaviour
         partsArrays = new SpriteRenderer[][]{ Bodies, Heads, Faces, Horns, Features, FaceBlood, HornsBlood, Brains, FacesClosed };
         SpritePole.localScale = new Vector3(Scale, Scale * Mathf.Sqrt(2f), Scale);
         Shadowcaster.transform.localScale = new Vector3(Scale, Scale, Scale);
-        if (_config == null)
+        if (_config == null) {
             Shuffle();
+        } else {
+            _config = new DemonConfiguration {
+                HeadId = _config.HeadId == -1 ? Random.Range(0, Heads.Length) : _config.HeadId,
+                FaceId = _config.FaceId == -1 ? Random.Range(0, Faces.Length) : _config.FaceId,
+                HornsId = _config.HornsId == -1 ? Random.Range(0, Horns.Length) : _config.HornsId,
+                BodyId = _config.BodyId == -1 ? Random.Range(0, Bodies.Length) : _config.BodyId,
+                FeatureId = _config.FeatureId == -1 ? Random.Range(0, Features.Length) : _config.FeatureId,
+            };
+            ApplyConfig();
+        }
     }
 
     void Update() {

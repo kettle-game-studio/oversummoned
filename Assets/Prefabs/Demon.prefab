@@ -7335,6 +7335,12 @@ MonoBehaviour:
   - {fileID: 244986360168014515}
   - {fileID: 1803287003978675013}
   Particles: {fileID: 6087957569203524468}
+  _config:
+    BodyId: -1
+    HeadId: -1
+    FaceId: -1
+    HornsId: -1
+    FeatureId: -1
   damageLevel:
     HornsBlood: 0
     FaceBlood: 0
