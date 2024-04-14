@@ -18,6 +18,7 @@ public class DemonScript : MonoBehaviour
     public SpriteRenderer[] Features;
 
     private SpriteRenderer[][] partsArrays;
+    private int[] sorting = new []{10, 20, 30, 10, 0};
 
     void Start()
     {
@@ -29,6 +30,14 @@ public class DemonScript : MonoBehaviour
 
     void Update() {
         DemonBody.transform.rotation = Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0);
+
+        for (var i = 0; i < sorting.Length; i++)
+        {
+            foreach(var part in partsArrays[i])
+            {
+                part.sortingOrder = sorting[i] - ((int)Vector3.Distance(Camera.main.transform.position, transform.position) * 100);
+            }
+        }
     }
 
     void Shuffle()
