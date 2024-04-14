@@ -30,9 +30,12 @@ public class DemonScript : MonoBehaviour
     private float timeOffset; 
     private float animationSpeed;
     private float angleOffset = 0;
+    
+    private float _timeUntilBlink;
 
     void Start()
     {
+        _timeUntilBlink = Random.Range(1.0f, 3.0f);
         timeOffset = Random.Range(0f, 5f); 
         animationSpeed = Random.Range(0.9f, 1.1f);
         partsArrays = new SpriteRenderer[][]{ Bodies, Heads, Faces, Horns, Features, FaceBlood, HornsBlood, Brains, FacesClosed };
@@ -54,6 +57,19 @@ public class DemonScript : MonoBehaviour
             {
                 part.sortingOrder = sorting[i] - ((int)Vector3.Distance(Camera.main.transform.position, transform.position) * 100);
             }
+        }
+
+        _timeUntilBlink -= Time.deltaTime;
+        if (_timeUntilBlink < 0) {
+            if (damageLevel.EyesClosed)
+            {
+                _timeUntilBlink = Random.Range(1.0f, 3.0f);
+            } else {
+                _timeUntilBlink = 0.1f;
+            }
+
+            damageLevel.EyesClosed = !damageLevel.EyesClosed;
+            ApplyConfig();
         }
     }
 
