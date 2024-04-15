@@ -33,7 +33,6 @@ public class Octogram : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exit");
         var exitDemon = other.GetComponent<DemonScript>();
         if (exitDemon != null && exitDemon == _demon)
         {

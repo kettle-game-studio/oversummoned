@@ -22,7 +22,6 @@ public class Systemd : MonoBehaviour
     IEnumerator DistributionCoroutine() {
         foreach (var req  in DemonRequest) {
             Queue.Enqueue(req);
-            Debug.Log("Enqueue demon");
             if (InitialQueueSurge > 0) {
                 InitialQueueSurge--;
                 continue;

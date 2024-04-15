@@ -51,11 +51,8 @@ public class TileManager : MonoBehaviour
                 minZ = z;
             }
 
-            Debug.Log($"found tile ({x}, {z})");
             tilePositions.Add((x, z));
         }
-
-        Debug.Log($"tilePositions = {tilePositions.Count}");
 
         for (var x = minX - 1; x <= maxX + 1; x++)
             for (var z = minZ - 1; z <= maxZ + 1; z++)
@@ -64,8 +61,6 @@ public class TileManager : MonoBehaviour
                 {
                     continue;
                 }
-
-                Debug.Log($"spawn = ({x}, {z})");
                 Instantiate(WallPrefab, new Vector3(x, 0, z), Quaternion.identity);
             }
     }
