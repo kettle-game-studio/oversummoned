@@ -266,6 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3492246915667774588}
   - component: {fileID: 728956613027038454}
+  - component: {fileID: 3874805442611075808}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -314,6 +315,14 @@ MonoBehaviour:
   Camera: {fileID: 856428943810620006}
   demonPopInSound: {fileID: 3955986230866547374}
   demonPopOutSound: {fileID: 8493627735938414801}
+--- !u!81 &3874805442611075808
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282020358665902738}
+  m_Enabled: 1
 --- !u!1 &6762931328634376342
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +461,6 @@ GameObject:
   m_Component:
   - component: {fileID: 108696737481989737}
   - component: {fileID: 856428943810620006}
-  - component: {fileID: 3169343266421620520}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -526,14 +534,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3169343266421620520
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8032068365441475873}
-  m_Enabled: 1
 --- !u!1001 &8037303555528133869
 PrefabInstance:
   m_ObjectHideFlags: 0
