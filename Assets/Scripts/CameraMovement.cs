@@ -99,9 +99,8 @@ public class CameraMovement : MonoBehaviour
         return Camera.transform.position + rayOffset;
     }
 
-    float ScalarMouseDirection(float mousePos, float winSize)
+    float ScalarMouseDirection(float mousePos, float winSize, float threshold)
     {
-        float threshold = CameraMouseMoveThreshold;
         if (mousePos < 0 || mousePos > winSize) return 0;
         var thresholdPx = winSize * threshold;
         if (mousePos < thresholdPx)
@@ -116,12 +115,15 @@ public class CameraMovement : MonoBehaviour
         var mousePos = Input.mousePosition;
         var moveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        if (!Input.GetMouseButton(1))
+        if (!Input.GetMouseButton(1) && Demon != null)
         {
-            moveVector.x += ScalarMouseDirection(mousePos.x, Screen.width);
-            moveVector.z += ScalarMouseDirection(mousePos.y, Screen.height);
+            moveVector.x += ScalarMouseDirection(mousePos.x, Screen.width, CameraMouseMoveThreshold);
+            moveVector.z += ScalarMouseDirection(mousePos.y, Screen.height, CameraMouseMoveThreshold);
+        } else if (Input.GetMouseButton(2)) {
+            moveVector.x += ScalarMouseDirection(mousePos.x, Screen.width, 0.4f);
+            moveVector.z += ScalarMouseDirection(mousePos.y, Screen.height, 0.4f);
         }
-        return moveVector;
+        return moveVector.normalized;
     }
 
     void CheckCameraBounds()
