@@ -6,6 +6,8 @@ public class PentragramScript : MonoBehaviour
 {
     public ParticleSystem ParticlesGood;
     public ParticleSystem ParticlesBad;
+    public AudioSource soundGood;
+    public AudioSource soundBad;
 
     private Systemd systemd;
     private DemonRequest _request;
@@ -31,6 +33,7 @@ public class PentragramScript : MonoBehaviour
             if (_request != null && demon.config.MeetsRequest(_request, demon.damageLevel))
             {
                 ParticlesGood.Play();
+                soundGood.Play();
                 systemd.DemonSent(demon.config);
                 _request = null;
                 ApplyRequest();
@@ -42,6 +45,7 @@ public class PentragramScript : MonoBehaviour
             {
                 demon.DemonBody.AddForce((demon.transform.position - transform.position).normalized * 50000);
                 ParticlesBad.Play();
+                soundBad.Play();
             }
         }
     }

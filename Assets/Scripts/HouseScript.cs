@@ -7,6 +7,7 @@ public class HouseScript : MonoBehaviour
     public GameObject DemonPrefab;
     public Transform Spawnpoint;
     public SphereCollider GuardSphere;
+    public AudioSource sound;
     public float TimeToWork = 5;
     public float PushStrength = 10000;
 
@@ -55,6 +56,7 @@ public class HouseScript : MonoBehaviour
             {
                 state = State.Idle;
                 GuardSphere.enabled = false;
+                sound.Stop();
                 SpawnDemon();
             }
         }
@@ -105,6 +107,7 @@ public class HouseScript : MonoBehaviour
             damageLevel = demon.damageLevel;
             state = State.Working;
             Destroy(demon.gameObject);
+            sound.Play();
             _timeLeft = TimeToWork;
         }
     }
