@@ -15,4 +15,10 @@ public class SoundController : MonoBehaviour
             _sound = obj.GetComponent<SoundScript>();
         }
     }
+
+    private void Update()
+    {
+        if (!_sound.Source.isPlaying)
+            _sound.Source.Play();
+    }
 }
