@@ -6,6 +6,7 @@ public class Octogram : MonoBehaviour
     public ParticleSystem Particles;
     public Transform SpawnPoint;
     public GameObject DemonPrefab;
+    public AudioSource spawnSound;
 
     private Systemd systemd;
     private DemonScript _demon;
@@ -26,6 +27,7 @@ public class Octogram : MonoBehaviour
                 _demon.SetConfig(demonConfig, DamageLevel.RandomDamage());
                 StartCoroutine(AnimationCoroutine());
                 Particles.Play();
+                spawnSound.Play();
             }
         }
     }
