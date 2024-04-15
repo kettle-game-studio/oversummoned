@@ -35,10 +35,14 @@ public class Systemd : MonoBehaviour
             {
                 var req = new DemonRequest
                 {
-                    HornsId = RandomItem(new [] {-1, -1, 1, 2, 3, 4}),
-                    FeatureId = RandomItem(new [] {-1, -1, 0, 1, 2, 3}),
+                    HornsId = RandomItem(new[] { -1, -1, 1, 2, 3, 4 }),
+                    FeatureId = RandomItem(new[] { -1, -1, 0, 1, 2, 3 }),
                 };
                 yield return QueueDemonRequest(req);
+            }
+            while (totalDemonsSent != DemonsToShuffle)
+            {
+                yield return null;
             }
         }
         else
@@ -47,10 +51,10 @@ public class Systemd : MonoBehaviour
             {
                 yield return QueueDemonRequest(req);
             }
-        }
-        while (totalDemonsSent != DemonRequest.Count && totalDemonsSent != DemonsToShuffle)
-        {
-            yield return null;
+            while (totalDemonsSent != DemonRequest.Count)
+            {
+                yield return null;
+            }
         }
         yield return new WaitForSeconds(2);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
