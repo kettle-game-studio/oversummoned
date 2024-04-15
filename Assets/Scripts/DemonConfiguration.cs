@@ -26,7 +26,10 @@ public class DemonConfiguration {
     public int HornsId;
     public int FeatureId;
 
-    public bool MeetsRequest(DemonRequest request) {
+    public bool MeetsRequest(DemonRequest request, DamageLevel damageLevel) {
+        if (damageLevel.Brains || damageLevel.FaceBlood || damageLevel.HornsBlood)
+            return false;
+
         if (request.FeatureId != -1 && request.FeatureId != FeatureId)
             return false;
 

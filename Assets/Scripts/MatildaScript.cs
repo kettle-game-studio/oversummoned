@@ -13,7 +13,7 @@ public class MatildaScript : MonoBehaviour
     private float _timeUntilBlink;
 
     void Start(){
-        
+
     }
 
     void Update() {
@@ -21,7 +21,6 @@ public class MatildaScript : MonoBehaviour
         Pole.rotation = Quaternion.Euler(0, 0, angle);
         HandleBlink();
     }
-
     
     void HandleBlink()
     {

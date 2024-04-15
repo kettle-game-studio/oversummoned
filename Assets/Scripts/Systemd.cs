@@ -35,7 +35,8 @@ public class Systemd : MonoBehaviour
         while(totalDemonsSent != DemonRequest.Count) {
             yield return null;
         }
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public DemonRequest PopDemonRequest()  {

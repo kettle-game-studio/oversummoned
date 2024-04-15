@@ -30,7 +30,7 @@ public class PentragramScript : MonoBehaviour
         var demon = other.GetComponent<DemonScript>();
         if (demon != null && !demon.IsHeld)
         {
-            if (_request != null && demon.config.MeetsRequest(_request))
+            if (_request != null && demon.config.MeetsRequest(_request, demon.damageLevel))
             {
                 ParticlesGood.Play();
                 systemd.DemonSent(demon.config);
