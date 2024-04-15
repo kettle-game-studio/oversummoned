@@ -48,7 +48,7 @@ public class Systemd : MonoBehaviour
                 yield return QueueDemonRequest(req);
             }
         }
-        while (totalDemonsSent != DemonRequest.Count)
+        while (totalDemonsSent != DemonRequest.Count && totalDemonsSent != DemonsToShuffle)
         {
             yield return null;
         }
