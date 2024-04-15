@@ -6,8 +6,10 @@ public class CameraMovement : MonoBehaviour
     public float CameraSpeed = 10;
     public float RotationSpeed = 10;
     public float DesiredGrabbedDemonHeights = 3f;
+    public float MinZoom = 2;
+    public float MaxZoom = 12;
 
-    public float CameraMouseMoveThreshold = 0.05f;
+    public float CameraMouseMoveThreshold = 0.1f;
 
     public GameObject LassoPrefab;
 
@@ -37,7 +39,7 @@ public class CameraMovement : MonoBehaviour
         {
             transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * RotationSpeed, Space.World);
         }
-
+        Camera.orthographicSize = Mathf.Clamp(Camera.orthographicSize - Input.mouseScrollDelta.y, MinZoom, MaxZoom);
         if (Input.GetMouseButtonDown(0) && Demon == null)
         {
             var p0 = MouseRayStart();
