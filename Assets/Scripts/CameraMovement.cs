@@ -123,7 +123,6 @@ public class CameraMovement : MonoBehaviour
     {
         var x = Mathf.Clamp(transform.position.x, tileManager.minX, tileManager.maxX);
         var z = Mathf.Clamp(transform.position.z, tileManager.minZ, tileManager.maxZ);
-        Debug.Log($"CheckCameraBounds ({x}, y, {z})");
         transform.position = new Vector3(x, transform.position.y, z);
     }
 }

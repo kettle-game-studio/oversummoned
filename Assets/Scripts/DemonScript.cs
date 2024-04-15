@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DemonScript : MonoBehaviour
 {
@@ -31,6 +33,8 @@ public class DemonScript : MonoBehaviour
     public DemonConfiguration config => _config;
 
     public DamageLevel damageLevel = new DamageLevel();
+
+    public bool NoRunning = false;
 
     private float timeOffset;
     private float animationSpeed;
@@ -118,6 +122,11 @@ public class DemonScript : MonoBehaviour
                 break;
 
             case State.Walking:
+                if (NoRunning)
+                {
+                    _state = State.Idle;
+                    Update();
+                }
                 DemonBody.transform.rotation = Quaternion.identity;
                 DemonBody.transform.Rotate(Vector3.up, _cachedCamera.transform.rotation.eulerAngles.y);
                 SpritePole.localPosition = new Vector3(0, System.MathF.Sin(Time.time * animationSpeed * 10f + timeOffset) * 0.1f, 0);
@@ -193,7 +202,7 @@ public class DemonScript : MonoBehaviour
                 case State.Walking:
                     if (Random.Range(0f, 1f) < 0.1f)
                     {
-                        Debug.Log("Stop Walking");
+                        // Debug.Log("Stop Walking");
                         _state = State.Idle;
                     }
                     break;

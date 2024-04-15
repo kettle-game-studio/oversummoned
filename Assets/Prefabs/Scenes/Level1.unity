@@ -1094,6 +1094,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
         type: 3}
+      propertyPath: NoRunning
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 696293640013901723, guid: b11fef324439726eca13879412cc733d,
+        type: 3}
       propertyPath: _config.HornsId
       value: 1
       objectReference: {fileID: 0}
