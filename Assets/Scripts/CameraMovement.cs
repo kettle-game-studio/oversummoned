@@ -18,6 +18,9 @@ public class CameraMovement : MonoBehaviour
 
     public Camera Camera;
 
+    public AudioSource demonPopInSound;
+    public AudioSource demonPopOutSound;
+
     private DemonScript Demon;
     private LineRenderer lasso;
     private TileManager tileManager;
@@ -55,6 +58,7 @@ public class CameraMovement : MonoBehaviour
                     Demon = demon;
                     Demon.StartBeHeld();
                     lasso = Instantiate(LassoPrefab).GetComponentInChildren<LineRenderer>();
+                    demonPopInSound.Play();
                 }
             }
         }
@@ -65,6 +69,7 @@ public class CameraMovement : MonoBehaviour
             Demon = null;
             Destroy(lasso.gameObject);
             lasso = null;
+            demonPopOutSound.Play();
         }
 
         SetDemonPosition();
