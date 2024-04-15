@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
+
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -117,11 +112,14 @@ public class CameraMovement : MonoBehaviour
     Vector3 CameraMoveVector()
     {
         var mousePos = Input.mousePosition;
-        return new Vector3(
-                Input.GetAxis("Horizontal") + ScalarMouseDirection(mousePos.x, Screen.width),
-                0,
-                Input.GetAxis("Vertical") + ScalarMouseDirection(mousePos.y, Screen.height)
-            );
+        var moveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        if (!Input.GetMouseButton(1))
+        {
+            moveVector.x += ScalarMouseDirection(mousePos.x, Screen.width);
+            moveVector.z += ScalarMouseDirection(mousePos.y, Screen.height);
+        }
+        return moveVector;
     }
 
     void CheckCameraBounds()
