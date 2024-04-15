@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,9 @@ public class Systemd : MonoBehaviour
 
     public bool ShuffleRequests;
     public int DemonsToShuffle = -1;
+
+    public RectTransform UIPole;
+    public RectTransform UITarget;
 
     private Queue<DemonRequest> Queue = new Queue<DemonRequest>();
     private int totalDemonsSent = 0;
@@ -56,7 +60,25 @@ public class Systemd : MonoBehaviour
                 yield return null;
             }
         }
-        yield return new WaitForSeconds(2);
+        StartCoroutine(EndLevelCoroutine());
+    }
+
+    IEnumerator EndLevelCoroutine()
+    {
+        Destroy(FindAnyObjectByType<CameraMovement>());
+        var start = UIPole.position;
+        var finish = UITarget.position;
+        var iters = 60;
+        for (var i = 0; i < iters; i++)
+        {
+            
+            UIPole.position = Vector3.Lerp(start, finish, (float)i / (iters - 1));
+            yield return new WaitForSeconds(1f / iters);
+        }
+    }
+
+    public void LoadNextLevel()
+    {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

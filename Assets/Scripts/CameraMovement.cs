@@ -64,7 +64,7 @@ public class CameraMovement : MonoBehaviour
         {
             Demon.StopBeHeld();
             Demon = null;
-            Destroy(lasso.gameObject);
+            Destroy(lasso.transform.parent.gameObject);
             lasso = null;
             demonPopOutSound.Play();
         }
