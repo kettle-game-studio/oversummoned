@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,9 @@ public class Systemd : MonoBehaviour
     public float Timeout = 15;
     public int InitialQueueSurge = 1;
     public TextMeshProUGUI Text;
+
+    public bool ShuffleRequests;
+    public int DemonsToShuffle = -1;
 
     private Queue<DemonRequest> Queue = new Queue<DemonRequest>();
     private int totalDemonsSent = 0;
@@ -25,19 +29,24 @@ public class Systemd : MonoBehaviour
 
     IEnumerator DistributionCoroutine()
     {
-        foreach (var req in DemonRequest)
+        if (ShuffleRequests)
         {
-            Queue.Enqueue(req);
-            if (InitialQueueSurge > 0)
+            for (var i = 0; i != DemonsToShuffle; i++)
             {
-                InitialQueueSurge--;
-                continue;
+                var req = new DemonRequest
+                {
+                    HornsId = RandomItem(new [] {-1, -1, 1, 2, 3, 4}),
+                    FeatureId = RandomItem(new [] {-1, -1, 0, 1, 2, 3}),
+                };
+                yield return QueueDemonRequest(req);
             }
-            while (Queue.Count != 0)
+        }
+        else
+        {
+            foreach (var req in DemonRequest)
             {
-                yield return null;
+                yield return QueueDemonRequest(req);
             }
-            yield return new WaitForSeconds(Timeout);
         }
         while (totalDemonsSent != DemonRequest.Count)
         {
@@ -45,6 +54,26 @@ public class Systemd : MonoBehaviour
         }
         yield return new WaitForSeconds(2);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public int RandomItem(int[] array)
+    {
+        return array[Random.Range(0, array.Length)];
+    }
+
+    IEnumerator QueueDemonRequest(DemonRequest req)
+    {
+        Queue.Enqueue(req);
+        if (InitialQueueSurge > 0)
+        {
+            InitialQueueSurge--;
+            yield break;
+        }
+        while (Queue.Count != 0)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(Timeout);
     }
 
     public DemonRequest PopDemonRequest()
@@ -71,7 +100,21 @@ public class Systemd : MonoBehaviour
 
     void SetText()
     {
-        Text.text = $"{totalDemonsSent}/{DemonRequest.Count}";
+        if (ShuffleRequests)
+        {
+            if (DemonsToShuffle == -1)
+            {
+                Text.text = $"{totalDemonsSent}";
+            }
+            else
+            {
+                Text.text = $"{totalDemonsSent}/{DemonsToShuffle}";
+            }
+        }
+        else
+        {
+            Text.text = $"{totalDemonsSent}/{DemonRequest.Count}";
+        }
     }
 
     IEnumerator RespawnCoroutine(DemonConfiguration config)
