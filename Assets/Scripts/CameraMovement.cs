@@ -24,7 +24,7 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
-        tileManager = GameObject.FindAnyObjectByType<TileManager>();
+        tileManager = FindAnyObjectByType<TileManager>();
     }
 
     void Update()
@@ -126,6 +126,8 @@ public class CameraMovement : MonoBehaviour
 
     void CheckCameraBounds()
     {
+        if (tileManager == null) return;
+
         var x = Mathf.Clamp(transform.position.x, tileManager.minX, tileManager.maxX);
         var z = Mathf.Clamp(transform.position.z, tileManager.minZ, tileManager.maxZ);
         transform.position = new Vector3(x, transform.position.y, z);
