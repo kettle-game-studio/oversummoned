@@ -136,9 +136,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f991b09d0f20a934291f96a6feab5036, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2720f3736a134004caf4cd34ad5ff2bf, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.644
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -305,6 +305,8 @@ MonoBehaviour:
   CameraSpeed: 10
   RotationSpeed: 2
   DesiredGrabbedDemonHeights: 5
+  MinZoom: 2
+  MaxZoom: 12
   CameraMouseMoveThreshold: 0.05
   LassoPrefab: {fileID: 3496747559686266829, guid: 8fb64ae157a049cff9da61ef83436577,
     type: 3}
