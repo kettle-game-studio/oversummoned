@@ -10,7 +10,7 @@ public class DamageLevel {
     public static DamageLevel RandomDamage() {
         var damage = new DamageLevel() {
             FaceBlood = true,
-            Brains = UnityEngine.Random.Range(0f, 1f) < 0.3,
+            Brains = true,
             HornsBlood = true,
         };
         return damage;
