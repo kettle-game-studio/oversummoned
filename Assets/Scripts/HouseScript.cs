@@ -14,6 +14,7 @@ public class HouseScript : MonoBehaviour
 
     public Action action;
     public int LimbId;
+    public GameObject[] Limbs;
 
     enum State
     {
@@ -40,6 +41,8 @@ public class HouseScript : MonoBehaviour
     void Start()
     {
         GuardSphere.enabled = false;
+        for (var i = 0; i < Limbs.Length; i++)
+            Limbs[i].SetActive(i == LimbId); 
     }
 
     void Update()

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LookAtPlayer : MonoBehaviour
 {
+    public SpriteRenderer[] prioritableSprites;
+    public int[] defaultPriorities;
+
     void Start()
     {
         transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
@@ -13,5 +16,9 @@ public class LookAtPlayer : MonoBehaviour
     {
         transform.rotation = Quaternion.identity;
         transform.Rotate(Vector3.up, Camera.main.transform.rotation.eulerAngles.y);
+
+        for (var i = 0; i < prioritableSprites.Length; i++) {
+            prioritableSprites[i].sortingOrder = defaultPriorities[i] - ((int)Vector3.Distance(Camera.main.transform.position, transform.position) * 100);
+        }
     }
 }

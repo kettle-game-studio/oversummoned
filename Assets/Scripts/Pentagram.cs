@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PentragramScript : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PentragramScript : MonoBehaviour
     public GameObject Bubble;
     public SpriteRenderer[] Horns;
     public SpriteRenderer[] Features;
+
+    public float FetchDemonTimeout = 5;
 
     void Start()
     {
@@ -35,7 +38,7 @@ public class PentragramScript : MonoBehaviour
                 ApplyRequest();
                 Destroy(demon.gameObject);
                 StartCoroutine(AnimationCoroutine());
-                StartCoroutine(WaitForRequest());
+                StartCoroutine(WaitForRequest(FetchDemonTimeout));
             }
             else
             {
@@ -45,7 +48,7 @@ public class PentragramScript : MonoBehaviour
         }
     }
 
-    IEnumerator WaitForRequest(float timeout = 5)
+    IEnumerator WaitForRequest(float timeout)
     {
         yield return new WaitForSeconds(timeout);
         while (true)
