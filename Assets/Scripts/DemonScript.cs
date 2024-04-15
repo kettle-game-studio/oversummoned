@@ -127,8 +127,8 @@ public class DemonScript : MonoBehaviour
                     _state = State.Idle;
                     Update();
                 }
-                DemonBody.transform.rotation = Quaternion.identity;
-                DemonBody.transform.Rotate(Vector3.up, _cachedCamera.transform.rotation.eulerAngles.y);
+                SpritePole.transform.rotation = Quaternion.identity;
+                SpritePole.transform.Rotate(Vector3.up, _cachedCamera.transform.rotation.eulerAngles.y);
                 SpritePole.localPosition = new Vector3(0, System.MathF.Sin(Time.time * animationSpeed * 10f + timeOffset) * 0.1f, 0);
                 DemonBody.velocity = _walkDirection + Vector3.up * DemonBody.velocity.y;
                 break;
@@ -149,9 +149,9 @@ public class DemonScript : MonoBehaviour
     {
         SpritePole.localPosition = new Vector3(0, 0, 0);
         var angle = System.MathF.Sin(Time.time * animationSpeed + timeOffset) * 10 + angleOffset;
-        DemonBody.transform.rotation = Quaternion.identity;
-        DemonBody.transform.Rotate(_cachedCamera.transform.forward, angle);
-        DemonBody.transform.Rotate(Vector3.up, _cachedCamera.transform.rotation.eulerAngles.y);
+        SpritePole.transform.rotation = Quaternion.identity;
+        SpritePole.transform.Rotate(_cachedCamera.transform.forward, angle);
+        SpritePole.transform.Rotate(Vector3.up, _cachedCamera.transform.rotation.eulerAngles.y);
     }
 
     void HandleBlink()
