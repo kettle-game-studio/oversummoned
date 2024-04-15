@@ -6,10 +6,11 @@ public class LookAtPlayer : MonoBehaviour
 {
     public SpriteRenderer[] prioritableSprites;
     public int[] defaultPriorities;
+    public float scale = 1;
 
     void Start()
     {
-        transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
+        transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1) * scale;
     }
 
     void Update()

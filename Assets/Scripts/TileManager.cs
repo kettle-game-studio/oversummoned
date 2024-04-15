@@ -6,6 +6,7 @@ using UnityEngine;
 public class TileManager : MonoBehaviour
 {
     public GameObject WallPrefab;
+    public GameObject[] DecorationPrefabs;
 
     void Start()
     {
@@ -17,8 +18,22 @@ public class TileManager : MonoBehaviour
         foreach (var tile in FindObjectsByType<TileScript>(FindObjectsSortMode.None))
         {
             var position = tile.transform.position;
+
             var x = (int)position.x;
             var z = (int)position.z;
+
+            if (Random.Range(0f, 1f) < 0.2f)
+            {
+                var go = Instantiate(
+                    DecorationPrefabs[Random.Range(0, DecorationPrefabs.Length)],
+                    position + new Vector3(Random.Range(-0.4f, 0.4f), 0.5f, Random.Range(-0.4f, 0.4f)),
+                    Quaternion.identity
+                );
+
+                var scale = Random.Range(0.5f, 2f);
+                go.transform.localScale = new Vector3(1, 1, 1) * scale;
+            }
+
             if (x > maxX)
             {
                 maxX = x;

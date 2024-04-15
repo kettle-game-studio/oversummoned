@@ -37,7 +37,14 @@ public class DemonScript : MonoBehaviour
     
     private float _timeUntilBlink;
 
-    public bool IsHeld;
+    private enum State {
+        Idle,
+        Walking,
+        IsHeld,
+    }
+
+    private State _state = State.Idle;
+    public bool IsHeld => _state == State.IsHeld;
 
     void Start()
     {
@@ -152,7 +159,7 @@ public class DemonScript : MonoBehaviour
         angleOffset = 180;
         animationSpeed *= 3;
         Particles.Play();
-        IsHeld = true;
+        _state = State.IsHeld;
     }
 
     public void StopBeHeld()
@@ -161,6 +168,6 @@ public class DemonScript : MonoBehaviour
         angleOffset = 0;
         animationSpeed /= 3;
         Particles.Play();
-        IsHeld = false;
+        _state = State.Idle;
     }
 }
