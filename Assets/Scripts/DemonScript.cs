@@ -7,6 +7,7 @@ public class DemonScript : MonoBehaviour
     public float Scale = 1;
 
     public Rigidbody DemonBody;
+    public AudioSource walkSound;
 
     public MeshRenderer Shadowcaster;
     public Transform SpritePole;
@@ -100,6 +101,9 @@ public class DemonScript : MonoBehaviour
 
     void Update()
     {
+        if (_state !=  State.Walking && walkSound.isPlaying)
+            walkSound.Stop();
+
         switch (_state)
         {
             case State.Falling:
@@ -107,6 +111,7 @@ public class DemonScript : MonoBehaviour
                 if (transform.position.y < 1.0)
                 {
                     _state = State.Walking;
+                    walkSound.Play();
                     SetRandomDirection();
                 }
                 break;
