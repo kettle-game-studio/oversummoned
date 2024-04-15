@@ -1,7 +1,5 @@
 using System.Collections;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class DemonScript : MonoBehaviour
 {

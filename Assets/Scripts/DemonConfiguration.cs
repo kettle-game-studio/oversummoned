@@ -1,5 +1,4 @@
 using System;
-using UnityEditor;
 
 [Serializable]
 public class DamageLevel {
