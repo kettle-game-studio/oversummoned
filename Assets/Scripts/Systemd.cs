@@ -8,9 +8,12 @@ public class Systemd : MonoBehaviour
     [SerializeField]
     private List<DemonRequest> DemonRequest;
     public float Timeout = 15;
+    public int InitialQueueSurge = 1;
 
     private Queue<DemonRequest> Queue = new Queue<DemonRequest>();
     private int totalDemonsSent = 0;
+
+    private Queue<DemonConfiguration> RespawnQueue = new Queue<DemonConfiguration>(); 
 
     void Start() {
         StartCoroutine(DistributionCoroutine());
@@ -20,6 +23,10 @@ public class Systemd : MonoBehaviour
         foreach (var req  in DemonRequest) {
             Queue.Enqueue(req);
             Debug.Log("Enqueue demon");
+            if (InitialQueueSurge > 0) {
+                InitialQueueSurge--;
+                continue;
+            }
             while(Queue.Count != 0) {
                 yield return null;
             }
@@ -37,8 +44,22 @@ public class Systemd : MonoBehaviour
         return Queue.Dequeue();
     }
 
-    public void DemonSent()
+    public DemonConfiguration PopRespawndDemon()  {
+        if (RespawnQueue.Count == 0) return null;
+
+        return RespawnQueue.Dequeue();
+    }
+
+
+    public void DemonSent(DemonConfiguration config)
     {
         totalDemonsSent++;
+        StartCoroutine(RespawnCoroutine(config));
+    }
+
+    IEnumerator RespawnCoroutine(DemonConfiguration config) {
+        yield return new WaitForSeconds(5);
+
+        RespawnQueue.Enqueue(config);
     }
 }

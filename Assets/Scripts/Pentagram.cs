@@ -30,12 +30,12 @@ public class PentragramScript : MonoBehaviour
             if (_request != null && demon.config.MeetsRequest(_request))
             {
                 ParticlesGood.Play();
+                systemd.DemonSent(demon.config);
                 _request = null;
                 ApplyRequest();
                 Destroy(demon.gameObject);
                 StartCoroutine(AnimationCoroutine());
                 StartCoroutine(WaitForRequest());
-                systemd.DemonSent();
             }
             else
             {

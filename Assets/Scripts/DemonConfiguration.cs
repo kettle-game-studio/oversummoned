@@ -7,6 +7,15 @@ public class DamageLevel {
     public bool FaceBlood;
     public bool Brains;
     public bool EyesClosed;
+
+    public static DamageLevel RandomDamage() {
+        var damage = new DamageLevel() {
+            FaceBlood = UnityEngine.Random.Range(0f, 1f) < 0.5,
+            Brains = UnityEngine.Random.Range(0f, 1f) < 0.1,
+        };
+        damage.HornsBlood = !(damage.FaceBlood || damage.Brains) ? true : UnityEngine.Random.Range(0f, 1f) < 0.7;
+        return damage;
+    }
 }
 
 [Serializable]
