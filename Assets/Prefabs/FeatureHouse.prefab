@@ -119,7 +119,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.4
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -936,7 +936,7 @@ MonoBehaviour:
   action: 3
   LimbId: 2
   Limbs:
-  - {fileID: 3123154329380867864}
   - {fileID: 5093263557361160009}
+  - {fileID: 3123154329380867864}
   - {fileID: 2491470785874159427}
   - {fileID: 7372411743319982867}
