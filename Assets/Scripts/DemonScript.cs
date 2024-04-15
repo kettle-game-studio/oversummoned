@@ -37,6 +37,8 @@ public class DemonScript : MonoBehaviour
     
     private float _timeUntilBlink;
 
+    private Camera _cachedCamera;
+
     private enum State {
         Idle,
         Walking,
@@ -48,6 +50,7 @@ public class DemonScript : MonoBehaviour
 
     void Start()
     {
+        _cachedCamera = Camera.main;
         _timeUntilBlink = Random.Range(1.0f, 3.0f);
         timeOffset = Random.Range(0f, 5f); 
         animationSpeed = Random.Range(0.9f, 1.1f);
@@ -70,15 +73,15 @@ public class DemonScript : MonoBehaviour
 
     void Update() {
         var angle = System.MathF.Sin(Time.time * animationSpeed + timeOffset) * 10 + angleOffset;
-        DemonBody.transform.rotation = Quaternion.identity; //Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0);
-        DemonBody.transform.Rotate(Camera.main.transform.forward, angle);
-        DemonBody.transform.Rotate(Vector3.up, Camera.main.transform.rotation.eulerAngles.y);
+        DemonBody.transform.rotation = Quaternion.identity;
+        DemonBody.transform.Rotate(_cachedCamera.transform.forward, angle);
+        DemonBody.transform.Rotate(Vector3.up, _cachedCamera.transform.rotation.eulerAngles.y);
 
         for (var i = 0; i < sorting.Length; i++)
         {
             foreach(var part in partsArrays[i])
             {
-                part.sortingOrder = sorting[i] - ((int)Vector3.Distance(Camera.main.transform.position, transform.position) * 100);
+                part.sortingOrder = sorting[i] - ((int)Vector3.Distance(_cachedCamera.transform.position, transform.position) * 100);
             }
         }
 
