@@ -8,13 +8,18 @@ public class TileManager : MonoBehaviour
     public GameObject WallPrefab;
     public GameObject[] DecorationPrefabs;
 
+    public int maxX = int.MinValue;
+    public int minX = int.MaxValue;
+    public int maxZ = int.MinValue;
+    public int minZ = int.MaxValue;
+
     void Start()
     {
         var tilePositions = new HashSet<(int, int)>();
-        var maxX = int.MinValue;
-        var minX = int.MaxValue;
-        var maxZ = int.MinValue;
-        var minZ = int.MaxValue;
+        maxX = int.MinValue;
+        minX = int.MaxValue;
+        maxZ = int.MinValue;
+        minZ = int.MaxValue;
         foreach (var tile in FindObjectsByType<TileScript>(FindObjectsSortMode.None))
         {
             var position = tile.transform.position;

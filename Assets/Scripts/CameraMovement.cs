@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -18,6 +20,12 @@ public class CameraMovement : MonoBehaviour
 
     private DemonScript Demon;
     private LineRenderer lasso;
+    private TileManager tileManager;
+
+    void Start()
+    {
+        tileManager = GameObject.FindAnyObjectByType<TileManager>();
+    }
 
     void Update()
     {
@@ -25,6 +33,7 @@ public class CameraMovement : MonoBehaviour
             CameraMoveVector() * Time.deltaTime * CameraSpeed,
             Space.Self
         );
+        CheckCameraBounds();
 
         if (Input.GetMouseButton(1))
         {
@@ -99,6 +108,7 @@ public class CameraMovement : MonoBehaviour
             return 1;
         return 0;
     }
+
     Vector3 CameraMoveVector()
     {
         var mousePos = Input.mousePosition;
@@ -107,5 +117,13 @@ public class CameraMovement : MonoBehaviour
                 0,
                 Input.GetAxis("Vertical") + ScalarMouseDirection(mousePos.y, Screen.height)
             );
+    }
+
+    void CheckCameraBounds()
+    {
+        var x = Mathf.Clamp(transform.position.x, tileManager.minX, tileManager.maxX);
+        var z = Mathf.Clamp(transform.position.z, tileManager.minZ, tileManager.maxZ);
+        Debug.Log($"CheckCameraBounds ({x}, y, {z})");
+        transform.position = new Vector3(x, transform.position.y, z);
     }
 }
