@@ -48,13 +48,11 @@ public class CameraMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0)) {
-            if (Demon != null) {
-                Demon.StopBeHeld();
-                Demon = null;
-                Destroy(lasso.gameObject);
-                lasso = null;
-            }
+        if (!Input.GetMouseButton(0) && Demon != null) {
+            Demon.StopBeHeld();
+            Demon = null;
+            Destroy(lasso.gameObject);
+            lasso = null;
         }
 
         SetDemonPosition();
